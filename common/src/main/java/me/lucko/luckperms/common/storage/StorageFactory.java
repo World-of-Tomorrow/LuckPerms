@@ -32,9 +32,11 @@ import me.lucko.luckperms.common.storage.backing.AbstractBacking;
 import me.lucko.luckperms.common.storage.backing.JSONBacking;
 import me.lucko.luckperms.common.storage.backing.MongoDBBacking;
 import me.lucko.luckperms.common.storage.backing.SQLBacking;
+import me.lucko.luckperms.common.storage.backing.MSSQLBacking;
 import me.lucko.luckperms.common.storage.backing.YAMLBacking;
 import me.lucko.luckperms.common.storage.backing.sqlprovider.H2Provider;
 import me.lucko.luckperms.common.storage.backing.sqlprovider.MySQLProvider;
+import me.lucko.luckperms.common.storage.backing.sqlprovider.MSSQLProvider;
 import me.lucko.luckperms.common.storage.backing.sqlprovider.PostgreSQLProvider;
 import me.lucko.luckperms.common.storage.backing.sqlprovider.SQLiteProvider;
 import me.lucko.luckperms.common.utils.ImmutableCollectors;
@@ -133,6 +135,8 @@ public class StorageFactory {
                 return new MongoDBBacking(plugin, plugin.getConfiguration().get(ConfigKeys.DATABASE_VALUES));
             case YAML:
                 return new YAMLBacking(plugin, plugin.getDataDirectory());
+            case MSSQL:
+            	return new MSSQLBacking(plugin, new MSSQLProvider(plugin.getConfiguration().get(ConfigKeys.DATABASE_VALUES)), plugin.getConfiguration().get(ConfigKeys.SQL_TABLE_PREFIX));
             default:
                 return new JSONBacking(plugin, plugin.getDataDirectory());
         }

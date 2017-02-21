@@ -36,7 +36,8 @@ public enum StorageType {
     MYSQL("mysql"),
     POSTGRESQL("postgresql"),
     SQLITE("sqlite"),
-    H2("h2");
+    H2("h2"),
+    MSSQL("mssql");
 
     @Getter
     private final List<String> identifiers;

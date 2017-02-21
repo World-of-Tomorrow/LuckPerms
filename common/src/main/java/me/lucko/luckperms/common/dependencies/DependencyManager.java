@@ -64,6 +64,7 @@ public class DependencyManager {
             .put(StorageType.POSTGRESQL, ImmutableList.of(Dependency.POSTGRESQL_DRIVER, Dependency.SLF4J_API, Dependency.SLF4J_SIMPLE, Dependency.HIKARI))
             .put(StorageType.SQLITE, ImmutableList.of(Dependency.SQLITE_DRIVER))
             .put(StorageType.H2, ImmutableList.of(Dependency.H2_DRIVER))
+            .put(StorageType.MSSQL, ImmutableList.of(Dependency.MSSQL_DRIVER, Dependency.SLF4J_API, Dependency.SLF4J_SIMPLE, Dependency.HIKARI))
             .build();
 
     public static void loadDependencies(LuckPermsPlugin plugin, Set<StorageType> storageTypes) {
